@@ -38,16 +38,23 @@ func getWrapperSize(size string) int {
 	w, _ := strconv.Atoi(dimensions[1])
 	h, _ := strconv.Atoi(dimensions[2])
 
-	f := l * w
-	s := w * h
-	t := h * l
+	smallest := min(l, min(w, h))
+	secondSmallest := max(min(l, w), max(min(w, h), min(h, l)))
 
-	smallest := myMin(f, myMin(s, t))
+	ribbon := (smallest + secondSmallest) * 2
 
-	return (f+s+t)*2 + smallest
+	return (l * w * h) + ribbon
 }
 
-func myMin(a, b int) int {
+func max(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
+}
+
+func min(a, b int) int {
 	if a < b {
 		return a
 	} else {
