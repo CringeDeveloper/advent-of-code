@@ -15,12 +15,12 @@ func main() {
 		codeS := strconv.Itoa(code)
 		temp := append(input, []byte(codeS)...)
 		result := fmt.Sprintf("%x", md5.Sum(temp))
-		for _, v := range []rune(result[:5]) {
+		for _, v := range []rune(result[:6]) {
 			if v == '0' {
 				f++
 			}
 
-			if f == 5 {
+			if f == 6 {
 				fmt.Println(codeS)
 				fmt.Println(result)
 				return
