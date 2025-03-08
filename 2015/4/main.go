@@ -26,7 +26,7 @@ func main() {
 
 	semaphore := make(chan struct{}, 5)
 
-	test := abc{-1000, sync.Mutex{}}
+	test := abc{0, sync.Mutex{}}
 
 	wg := sync.WaitGroup{}
 	wg.Add(1)
