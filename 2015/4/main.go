@@ -22,7 +22,7 @@ func (a *abc) get() int {
 
 func main() {
 	input := "yzbqklnj"
-	code := 9962624
+	code := 0
 
 	semaphore := make(chan struct{}, 5)
 
