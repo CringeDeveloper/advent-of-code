@@ -30,10 +30,8 @@ func stringGood(str string) bool {
 	for i, v := range str {
 		if first != "" {
 			index, ok := pairs[first+string(v)]
-			if ok {
-				if index != i-1 {
-					par = true
-				}
+			if ok && index != i-1 {
+				par = true
 			}
 			if !ok {
 				pairs[first+string(v)] = i
