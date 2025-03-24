@@ -28,28 +28,25 @@ func stringGood(str string) bool {
 	pairs := make(map[string]int)
 
 	for i, v := range str {
-		if first != "" {
-			index, ok := pairs[first+string(v)]
-			if ok && index != i-1 {
+		index, ok := pairs[first+string(v)]
+		if ok {
+			if index != i-1 {
 				par = true
 			}
-			if !ok {
-				pairs[first+string(v)] = i
-			}
+		} else {
+			pairs[first+string(v)] = i
+		}
 
-			if second != "" {
-				if string(v) == second {
-					rep = true
-				}
-			}
+		if string(v) == second {
+			rep = true
 		}
 
 		if par && rep {
 			return true
+		} else {
+			second = first
+			first = string(v)
 		}
-
-		second = first
-		first = string(v)
 	}
 
 	return false
